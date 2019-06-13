@@ -15,10 +15,9 @@ votesper = []
 percentper = []
 
 # Set path for file
-
-directory = os.path.dirname(os.path.realpath(__file__))
-
-csvpath = os.path.join(directory,"election_data.csv")
+#directory = os.path.dirname(os.path.realpath(__file__))
+#csvpath = os.path.join(directory,"election_data.csv")
+csvpath = os.path.join("election_data.csv")
 
 # Open the CSV
 with open(csvpath, newline="") as csvfile:

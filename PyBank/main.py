@@ -15,10 +15,9 @@ maxdelta = 0
 mindelta = 0
 
 # Set path for file
-
-directory = os.path.dirname(os.path.realpath(__file__))
-
-csvpath = os.path.join(directory,"budget_data.csv")
+#directory = os.path.dirname(os.path.realpath(__file__))
+#csvpath = os.path.join(directory,"budget_data.csv")
+csvpath = os.path.join("budget_data.csv")
 
 # Open the CSV
 with open(csvpath, newline="") as csvfile:
