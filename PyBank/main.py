@@ -10,7 +10,9 @@ import csv
 
 # First step is initializing the summand and min/max variables
 months = 0
+archive = 0
 delta = 0
+change = 0
 maxdelta = 0
 mindelta = 0
 
@@ -27,6 +29,8 @@ with open(csvpath, newline="") as csvfile:
     # We are now going to process these data for the final report
     for row in csvreader:
         months = months + 1
+        if months > 1:
+            change += float(row[1]) - archive
         delta = delta + float(row[1])
         if float(row[1]) > maxdelta:
             maxdelta = float(row[1])
@@ -34,6 +38,7 @@ with open(csvpath, newline="") as csvfile:
         if float(row[1]) < mindelta:
             mindelta = float(row[1])
             minrow = row
+        archive = float(row[1]) #brute force storing data. Pandas make this much easier...
             
 # Creating the simple little output
 exports = []
@@ -41,6 +46,7 @@ exports.append("Financial Analysis")
 exports.append("-----------------------------------------------------")
 exports.append("Total Months: "+str(months))
 exports.append("Total: $"+str(delta))
+exports.append("Average Change: $"+str(round(change/85,2)))
 exports.append("Greatest Increase in Profits: "+maxrow[0]+" $"+maxrow[1])
 exports.append("Greatest Decrease in Profits: "+minrow[0]+" $"+minrow[1])
 
